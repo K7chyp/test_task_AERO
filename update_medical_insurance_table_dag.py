@@ -4,8 +4,6 @@ from airflow.hooks.base import BaseHook
 import os
 from parser.site_parser import start_parse_site
 
-SAVE_PATH = os.getcwd() + "/data/"
-SCHEMA = 'medical_base'
 ch = BaseHook.get_connection("ClickHouse")
 connection = {'host': ch.host, 'port': ch.port, 'database': ch.schema, 'user': ch.login, 'password': ch.password}
 
