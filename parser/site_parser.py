@@ -2,8 +2,8 @@ import pandas as pd
 import requests
 from sqlalchemy import create_engine
 
-link = 'https://random-data-api.com/api/cannabis/random_cannabis'
-params = {'size': 10}
+LINK = 'https://random-data-api.com/api/cannabis/random_cannabis'
+PARAMS = {'size': 10}
 
 
 def safty_get_link(link, params, *args, **kwargs):
@@ -49,7 +49,7 @@ def start_parse_site(clickhouse_url, table_name, how_many_rows_need, save_path='
     result_df = pd.DataFrame()
     how_many_rows_got = 0
     while how_many_rows_need > how_many_rows_got:
-        result = safty_get_link(link, params)
+        result = safty_get_link(LINK, PARAMS)
         if result:
             result_df = pd.DataFrame(result)
             result_df.to_sql(table_name, engine, if_exists='append', index=False, method='multi')
