@@ -15,6 +15,10 @@ connection = {'host': ch.host, 'port': ch.port, 'database': ch.schema, 'user': c
 )
 def medical_insurance_update_dag():
     """
+    Функция update_medical_insurance_op является задачей в DAG. 
+    Она вызывает функцию start_parse_site, которая выполняет парсинг сайта и обновляет данные в таблице medical_insurance в базе данных ClickHouse.
+    Параметры подключения к базе данных передаются через переменные connection. В данном примере парсится 1000 строк данных.
+
     """
     @task()
     def update_medical_insurance_op(ds=None, **kwargs):
