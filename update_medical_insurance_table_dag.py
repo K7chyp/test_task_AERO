@@ -8,7 +8,7 @@ ch = BaseHook.get_connection("ClickHouse")
 connection = {'host': ch.host, 'port': ch.port, 'database': ch.schema, 'user': ch.login, 'password': ch.password}
 
 @dag(
-    schedule_interval='@daily',
+    schedule_interval='0 */12 * * *',
     start_date=pendulum.datetime(2023, 7, 6, tz="UTC"),
     catchup=False,
     tags=['Парсер']
